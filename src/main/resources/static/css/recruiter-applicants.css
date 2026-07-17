@@ -1,0 +1,37 @@
+body{
+    background:#f5f7fb;
+}
+
+.container{
+    max-width:1300px;
+}
+
+table{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.table th{
+    text-align:center;
+}
+
+.table td{
+    vertical-align:middle;
+    text-align:center;
+}
+
+.btn{
+    border-radius:8px;
+    margin:2px;
+}
+
+.badge{
+    padding:8px 12px;
+    font-size:13px;
+}
+
+h2{
+    color:#0d6efd;
+    font-weight:bold;
+}

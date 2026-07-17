@@ -1,0 +1,27 @@
+<td>
+
+    <a
+            th:href="@{'/recruiter/application/' + ${app.id}}"
+            class="btn btn-primary btn-sm">
+
+        View
+
+    </a>
+
+    <a
+            th:href="@{'/recruiter/accept/' + ${app.id}}"
+            class="btn btn-success btn-sm">
+
+        Accept
+
+    </a>
+
+    <a
+            th:href="@{'/recruiter/reject/' + ${app.id}}"
+            class="btn btn-danger btn-sm">
+
+        Reject
+
+    </a>
+
+</td>

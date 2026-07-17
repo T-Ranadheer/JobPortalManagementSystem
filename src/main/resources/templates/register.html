@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Portal | Register</title>
+
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="register-card">
+
+        <!-- Left Side -->
+
+        <div class="left-side">
+
+            <h1>Welcome!</h1>
+
+            <p>
+                Create your Job Portal account to discover thousands of jobs,
+                connect with recruiters and build your dream career.
+            </p>
+
+        </div>
+
+        <!-- Right Side -->
+
+        <div class="right-side">
+
+            <h2>User Registration</h2>
+
+            <!-- Error Message -->
+
+            <div th:if="${error}" class="alert alert-danger">
+
+                <span th:text="${error}"></span>
+
+            </div>
+
+            <form th:action="@{/register}"
+                  th:object="${user}"
+                  method="post">
+
+                <label class="form-label">
+
+                    Full Name
+
+                </label>
+
+                <input
+                        type="text"
+                        class="form-control"
+                        th:field="*{fullName}"
+                        placeholder="Enter Full Name"
+                        required>
+
+                <label class="form-label">
+
+                    Email
+
+                </label>
+
+                <input
+                        type="email"
+                        class="form-control"
+                        th:field="*{email}"
+                        placeholder="Enter Email Address"
+                        required>
+
+                <label class="form-label">
+
+                    Password
+
+                </label>
+
+                <input
+                        type="password"
+                        class="form-control"
+                        th:field="*{password}"
+                        placeholder="Enter Password"
+                        required>
+
+                <label class="form-label">
+
+                    Phone Number
+
+                </label>
+
+                <input
+                        type="text"
+                        class="form-control"
+                        th:field="*{phone}"
+                        placeholder="Enter Phone Number">
+
+                <label class="form-label">
+
+                    Register As
+
+                </label>
+
+                <select
+                        class="form-select"
+                        th:field="*{role}"
+                        required>
+
+                    <option value="">
+                        Select Role
+                    </option>
+
+                    <option value="JOB_SEEKER">
+                        Job Seeker
+                    </option>
+
+                    <option value="RECRUITER">
+                        Recruiter
+                    </option>
+
+                </select>
+
+                <button
+                        type="submit"
+                        class="btn-register">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+            <div class="login-link">
+
+                Already have an account?
+
+                <a th:href="@{/login}">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

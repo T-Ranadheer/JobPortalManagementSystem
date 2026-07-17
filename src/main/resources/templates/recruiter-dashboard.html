@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Recruiter Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/recruiter-dashboard.css}">
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+
+            <h2>JobPortal</h2>
+
+            <p>Recruiter Panel</p>
+
+        </div>
+
+        <ul>
+
+            <li class="active">
+
+                <a th:href="@{/recruiter/dashboard}">
+                    🏠 Dashboard
+                </a>
+
+            </li>
+
+            <li>
+
+                <a th:href="@{/recruiter/post-job}">
+                    ➕ Post Job
+                </a>
+
+            </li>
+
+            <li>
+
+                <a th:href="@{/recruiter/manage-jobs}">
+                    💼 Manage Jobs
+                </a>
+
+            </li>
+
+            <li>
+
+                <a th:href="@{/recruiter/applicants}">
+                    👨‍💼 Applicants
+                </a>
+
+            </li>
+
+            <li>
+
+                <a th:href="@{/recruiter/company/profile}">
+                    Company Profile
+                </a>
+            </li>
+
+            <li>
+
+                <a th:href="@{/profile}">
+                    👤 My Profile
+                </a>
+
+            </li>
+
+            <li>
+
+                <form th:action="@{/logout}" method="post">
+
+                    <button type="submit" class="logout-btn">
+
+                        🚪 Logout
+
+                    </button>
+
+                </form>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- Main -->
+
+    <div class="main-content">
+
+        <!-- Top Bar -->
+
+        <div class="topbar">
+
+            <h2>
+
+                Welcome Recruiter 👋
+
+            </h2>
+
+            <div>
+
+                <a class="btn btn-primary"
+                   th:href="@{/recruiter/post-job}">
+
+                    + Post New Job
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Welcome Banner -->
+
+        <div class="welcome-banner">
+
+            <h1>
+
+                Manage Your Hiring Process Easily
+
+            </h1>
+
+            <p>
+
+                Post jobs, manage applications and hire the best candidates.
+
+            </p>
+
+        </div>
+
+        <!-- Dashboard Cards -->
+
+        <div class="row mt-4">
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <div class="dashboard-card blue">
+
+                    <h5>Total Jobs</h5>
+
+                    <h1 th:text="${totalJobs}"></h1>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <div class="dashboard-card green">
+
+                    <h5>Applications</h5>
+
+                    <h1 th:text="${totalApplications}"></h1>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <div class="dashboard-card orange">
+
+                    <h5>Companies</h5>
+
+                    <h1 th:text="${totalCompanies}"></h1>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <div class="dashboard-card red">
+
+                    <h5>Recruiters</h5>
+
+                    <h1 th:text="${totalRecruiters}"></h1>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ===========================
+     Posted Jobs
+=========================== -->
+
+        <div class="card shadow-lg border-0 mt-4">
+
+            <div class="card-header bg-primary text-white d-flex justify-content-between">
+
+                <h4>
+
+                    Posted Jobs
+
+                </h4>
+
+                <a th:href="@{/recruiter/post-job}"
+                   class="btn btn-light btn-sm">
+
+                    + New Job
+
+                </a>
+
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-dark">
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Job</th>
+
+                        <th>Company</th>
+
+                        <th>Location</th>
+
+                        <th>Experience</th>
+
+                        <th>Vacancies</th>
+
+                        <th>Deadline</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <tr th:each="job : ${jobs}">
+
+                        <td th:text="${job.id}"></td>
+
+                        <td>
+
+                            <strong th:text="${job.title}"></strong>
+
+                        </td>
+
+                        <td th:text="${job.company}"></td>
+
+                        <td th:text="${job.location}"></td>
+
+                        <td th:text="${job.experience}"></td>
+
+                        <td>
+
+                    <span class="badge bg-success"
+                          th:text="${job.vacancies}">
+                    </span>
+
+                        </td>
+
+                        <td th:text="${job.applicationDeadline}"></td>
+
+                        <td>
+
+                            <a th:href="@{'/recruiter/edit-job/' + ${job.id}}"
+                               class="btn btn-warning btn-sm">
+
+                                Edit
+
+                            </a>
+
+                            <a th:href="@{'/recruiter/delete-job/' + ${job.id}}"
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('Delete this job?')">
+
+                                Delete
+
+                            </a>
+
+                            <a th:href="@{/recruiter/applicants}"
+                               class="btn btn-info btn-sm text-white">
+                                Applicants
+                            </a>
+
+                                Applicants
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- ===========================
+             Quick Actions
+        =========================== -->
+
+        <div class="row mt-5">
+
+            <div class="col-lg-4 mb-4">
+
+                <div class="card shadow border-0 text-center p-4">
+
+                    <h2>
+
+                        ➕
+
+                    </h2>
+
+                    <h4>
+
+                        Post a New Job
+
+                    </h4>
+
+                    <p>
+
+                        Create a new job posting for your company.
+
+                    </p>
+
+                    <a th:href="@{/recruiter/post-job}"
+                       class="btn btn-primary">
+
+                        Post Job
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 mb-4">
+
+                <div class="card shadow border-0 text-center p-4">
+
+                    <h2>
+
+                        👥
+
+                    </h2>
+
+                    <h4>
+
+                        Manage Applicants
+
+                    </h4>
+
+                    <p>
+
+                        Review, accept and reject candidates.
+
+                    </p>
+
+                    <a th:href="@{/recruiter/applicants}"
+                       class="btn btn-success">
+
+                        View Applicants
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 mb-4">
+
+                <div class="card shadow border-0 text-center p-4">
+
+                    <h2>
+
+                        📊
+
+                    </h2>
+
+                    <h4>
+
+                        Reports
+
+                    </h4>
+
+                    <p>
+
+                        View recruitment statistics and reports.
+
+                    </p>
+
+                    <a href="#"
+                       class="btn btn-dark">
+
+                        View Reports
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ===========================
+             Recent Activity
+        =========================== -->
+
+        <div class="card shadow-lg border-0 mt-4 mb-5">
+
+            <div class="card-header bg-success text-white">
+
+                <h4>
+
+                    Recent Activity
+
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <ul class="list-group">
+
+                    <li class="list-group-item">
+
+                        ✔ New application received for Java Developer
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Software Engineer job viewed 120 times
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ 5 candidates shortlisted today
+
+                    </li>
+
+                    <li class="list-group-item">
+
+                        ✔ Cloud Engineer job expires in 3 days
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- Jobs Table will be added in Part 2 -->
+
+    </div>
+
+</div>
+
+</body>

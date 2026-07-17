@@ -1,0 +1,228 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fc;
+}
+
+/* =========================
+   Heading
+========================= */
+
+.page-title{
+    text-align:center;
+    font-size:40px;
+    font-weight:700;
+    color:#0d6efd;
+    margin-bottom:35px;
+}
+
+/* =========================
+   Search Box
+========================= */
+
+.search-box{
+    background:#fff;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    margin-bottom:40px;
+}
+
+.search-box .form-control{
+    height:52px;
+    border-radius:12px;
+}
+
+.search-box .btn{
+    height:52px;
+    border-radius:12px;
+    font-weight:600;
+}
+
+/* =========================
+   Job Card
+========================= */
+
+.job-card{
+    border:none;
+    border-radius:18px;
+    overflow:hidden;
+    transition:.35s;
+    background:#fff;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    position:relative;
+}
+
+.job-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+}
+
+.job-card::before{
+    content:"";
+    display:block;
+    height:5px;
+    width:100%;
+    background:linear-gradient(90deg,#0d6efd,#6610f2);
+}
+
+/* =========================
+   Company
+========================= */
+
+.company-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:18px;
+}
+
+.company-logo img{
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    object-fit:contain;
+    background:#eef5ff;
+    padding:8px;
+    border:2px solid #0d6efd22;
+}
+
+.company-name{
+    color:#0d6efd;
+    font-weight:600;
+    margin:0;
+}
+
+/* =========================
+   Job Title
+========================= */
+
+.job-title{
+    font-size:25px;
+    font-weight:700;
+    margin-bottom:15px;
+    color:#222;
+}
+
+/* =========================
+   Tags
+========================= */
+
+.job-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:18px 0;
+}
+
+.job-tags span{
+    background:#eef5ff;
+    color:#0d6efd;
+    padding:7px 14px;
+    border-radius:50px;
+    font-size:13px;
+    font-weight:600;
+}
+
+/* =========================
+   Description
+========================= */
+
+.job-description{
+    color:#666;
+    font-size:15px;
+    line-height:1.7;
+    margin-top:15px;
+}
+
+/* =========================
+   Footer
+========================= */
+
+.card-footer{
+    background:white;
+    border-top:none;
+    padding:20px;
+}
+
+.card-footer .btn{
+    border-radius:10px;
+    font-weight:600;
+    padding:8px 20px;
+}
+
+/* =========================
+   Save Button
+========================= */
+
+.btn-success{
+    background:#00b894;
+    border:none;
+}
+
+.btn-success:hover{
+    background:#009874;
+}
+
+/* =========================
+   View Button
+========================= */
+
+.btn-primary{
+    background:#0d6efd;
+    border:none;
+}
+
+.btn-primary:hover{
+    background:#0b5ed7;
+}
+
+/* =========================
+   Success Alert
+========================= */
+
+.alert-success{
+    border-radius:12px;
+    font-weight:500;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media(max-width:768px){
+
+    .page-title{
+        font-size:30px;
+    }
+
+    .company-header{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .job-title{
+        text-align:center;
+    }
+
+    .job-tags{
+        justify-content:center;
+    }
+
+    .card-footer{
+        text-align:center;
+    }
+
+    .card-footer .btn{
+        width:100%;
+        margin-bottom:10px;
+    }
+}
